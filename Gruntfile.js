@@ -214,6 +214,7 @@ module.exports = function (grunt) {
         },
 
 
+        // Prepare files to be compressed and uglified
         useminPrepare: {
             html: ['<%= config.app %>/index.html'],
             options: {
@@ -223,10 +224,31 @@ module.exports = function (grunt) {
         },
 
 
+        // Change file paths to concatenated, uglified and filereved ones
         usemin: {
             html: ['<%= config.distPath %>/index.html'],
             options: {
                 dest: '<%= config.distPath %>/'
+            }
+        },
+
+
+        // Minify HTML
+        htmlmin: {
+            deploy: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    conservativeCollapse: true,
+                    collapseBooleanAttributes: true,
+                    removeOptionalTags: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.productionPath %>/',
+                    src: ['index.html'],
+                    dest: '<%= config.productionPath %>/'
+                }]
             }
         },
 
@@ -317,6 +339,11 @@ module.exports = function (grunt) {
     });
 
 
+    /************************************************************************
+     * Registered Tasks
+     ************************************************************************/
+
+
     grunt.registerTask('check', [
         'jshint',
         'jscs'
@@ -351,6 +378,7 @@ module.exports = function (grunt) {
         'filerev',
         'usemin',
         'copy:prod',
+        'htmlmin',
         'clean:after'
     ]);
 
