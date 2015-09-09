@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="caseForYou">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <!--<link id="page_favicon" href="favicon.ico" rel="icon" type="image/x-icon">-->
+        <title>{{ projectName }}</title>
+        <!-- bower:css -->
+        <!-- endbower -->
+        <link rel="stylesheet" href="./css/main.css" />
+    </head>
+
+    <body>
+        <div ui-view></div>
+
+        <!-- bower:js -->
+        <script src="bower_components/angular/angular.js"></script>
+        <!-- endbower -->
+
+        <script src="app/app.js"></script>
+
+        <!-- Live reload -->
+        <script src="//localhost:35729/livereload.js"></script>
+    </body>
+</html>
