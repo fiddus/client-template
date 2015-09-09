@@ -132,7 +132,9 @@ module.exports = function (grunt) {
             },
             after: {
                 src: [
-                    './css'
+                    './css',
+                    '<%= config.tempPath %>',
+                    '<%= config.distPath %>'
                 ]
             }
         },
