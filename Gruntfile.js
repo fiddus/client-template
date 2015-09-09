@@ -220,8 +220,16 @@ module.exports = function (grunt) {
         useminPrepare: {
             html: ['<%= config.app %>/index.html'],
             options: {
-                dest: '<%= config.distPath %>',
-                root: '<%= config.distPath %>'
+                dest: '<%= config.distPath %>/',
+                flow: {
+                    html: {
+                        steps: {
+                            js: ['concat'],
+                            css: ['concat', 'cssmin']
+                        },
+                        post: {}
+                    }
+                }
             }
         },
 
@@ -232,6 +240,20 @@ module.exports = function (grunt) {
             options: {
                 dest: '<%= config.distPath %>/'
             }
+        },
+
+
+        uglify: {
+            /* jscs:disable */
+            my_target: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.distPath %>/js/',
+                    src: 'app.js',
+                    dest: '<%= config.distPath %>/js/'
+                }]
+            }
+            /* jscs:enable */
         },
 
 
@@ -376,7 +398,8 @@ module.exports = function (grunt) {
         'useminPrepare',
         'concat:generated',
         'cssmin:generated',
-        'uglify:generated',
+        'uglify',
+        // 'uglify:generated',
         'filerev',
         'usemin',
         'copy:prod',
