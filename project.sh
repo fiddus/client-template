@@ -64,7 +64,7 @@ function build {
 }
 
 function production {
-    dorun "NODE_ENV=prod grunt production" "Build Case4You website at /var/www/case4you folder"
+    dorun "grunt production" "Build Case4You website at /var/www/case4you folder"
     exitcode=$?
     return $exitcode
 }
