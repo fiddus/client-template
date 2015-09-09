@@ -16,7 +16,8 @@
 node_modules/
 bower_components/
 build/
-.tmp/
+dist/
+css/
 
 ###############################################################################
 # Accept these files

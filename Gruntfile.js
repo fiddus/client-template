@@ -7,11 +7,17 @@ module.exports = function (grunt) {
     var timer = require('grunt-timer'),
         configs = {
             app: '.',
-            appCwd: './',
-            buildPath: grunt.option('path') || './build'
+            appPath: './',
+            tempPath: '.tmp',
+            distPath: grunt.option('path') || './dist',
+            buildPath: grunt.option('path') || './build',
+            productionPath: grunt.option('path') || '/var/www/case4you/client'
         };
 
-    timer.init(grunt, {friendlyTime: false, color: 'blue'});
+    timer.init(grunt, {
+        friendlyTime: false,
+        color: 'blue'
+    });
 
     grunt.initConfig({
 
@@ -26,6 +32,9 @@ module.exports = function (grunt) {
         env: {
             test: {
                 NODE_ENV: 'test'
+            },
+            prod: {
+                NODE_ENV: 'prod'
             }
         },
 
@@ -37,9 +46,9 @@ module.exports = function (grunt) {
                 reporter: require('jshint-stylish'),
                 ignores: [
                     'bower_components/**/*',
-                    'assets/**/*',
                     'node_modules/**/*',
-                    'build/**/*'
+                    'build/**/*',
+                    'dist/**/*'
                 ]
             },
             all: ['./**/*.js']
@@ -53,45 +62,15 @@ module.exports = function (grunt) {
                 reporter: require('jscs-stylish').path,
                 excludeFiles: [
                     'bower_components/**/*',
-                    'assets/**/*',
                     'node_modules/**/*',
-                    'build/**/*'
+                    'build/**/*',
+                    'dist/**/*'
                 ]
             },
             all: [
                 'client/**/*.js',
                 'Gruntfile.js'
             ]
-        },
-
-
-        release: {
-            options: {
-                npm: false,
-                indentation: '    ',
-                github: {
-                    repo: 'fiddus/case4you-client',
-                    usernameVar: 'GITHUB_USERNAME',
-                    passwordVar: 'GITHUB_ACCESS_TOKEN'
-                }
-            }
-        },
-
-
-        /************************************************************************
-         * Client Configurations
-         ************************************************************************/
-
-        // Client tests
-        karma: {
-            unit: {
-                options: {
-                    files: ['./app/**/*Tests.js']
-                },
-                configFile: './karma.conf.js',
-                autoWatch: false,
-                singleRun: true
-            }
         },
 
 
@@ -112,11 +91,49 @@ module.exports = function (grunt) {
                     trace: true,
                     unixNewlines: true,
                     lineNumbers: true,
-                    cacheLocation: '.tmp/sass-cache'
+                    cacheLocation: '<%= config.tempPath %>/sass-cache'
                 },
                 files: {
                     '<%= config.buildPath %>/css/main.css': '<%= config.app %>/app/app.scss'
                 }
+            },
+            prod: {
+                options: {
+                    style: 'compressed',
+                    unixNewlines: true,
+                    cacheLocation: '<%= config.tempPath %>/sass-cache'
+                },
+                files: {
+                    '<%= config.app %>/css/main.css': '<%= config.app %>/app/app.scss'
+                }
+            }
+        },
+
+
+        // Remove desired directories
+        clean: {
+            build: {
+                src: [
+                    '<%= config.tempPath %>',
+                    '<%= config.distPath %>',
+                    '<%= config.buildPath %>'
+                ]
+            },
+            prod: {
+                options: {
+                    force: true
+                },
+                src: [
+                    '<%= config.tempPath %>',
+                    '<%= config.distPath %>',
+                    '<%= config.buildPath %>',
+                    '<%= config.productionPath %>'
+                ]
+            },
+            after: {
+                src: [
+                    './css'
+                ]
             }
         },
 
@@ -146,14 +163,83 @@ module.exports = function (grunt) {
                         dest: '<%= config.buildPath %>/'
                     }
                 ]
+            },
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= config.appPath %>',
+                        src: ['index.html'],
+                        dest: '<%= config.distPath %>',
+                        flatten: true,
+                        filter: 'isFile'
+                    }
+                ]
+            },
+            prod: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= config.distPath %>/',
+                        src: ['index.html'],
+                        dest: '<%= config.productionPath %>',
+                        flatten: true,
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= config.distPath %>/',
+                        src: ['js/**/*', 'css/**/*'],
+                        dest: '<%= config.productionPath %>/'
+                    }
+                ]
             }
         },
 
 
-        // Remove desired directories
-        clean: {
-            build: {
-                src: ['<%= config.buildPath %>']
+        // Add hash on file name to avoid caching
+        filerev: {
+            options: {
+                algorithm: 'md5',
+                length: 8
+            },
+            prod: {
+                src: [
+                    '<%= config.distPath %>/js/**/*.js',
+                    '<%= config.distPath %>/css/**/*.css',
+                    '<%= config.distPath %>/css/fonts/*',
+                    '<%= config.distPath %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
+                ]
+            }
+        },
+
+
+        useminPrepare: {
+            html: ['<%= config.app %>/index.html'],
+            options: {
+                dest: '<%= config.distPath %>',
+                root: '<%= config.distPath %>'
+            }
+        },
+
+
+        usemin: {
+            html: ['<%= config.distPath %>/index.html'],
+            options: {
+                dest: '<%= config.distPath %>/'
+            }
+        },
+
+
+        // Client tests
+        karma: {
+            unit: {
+                options: {
+                    files: ['./app/**/*Tests.js']
+                },
+                configFile: './karma.conf.js',
+                autoWatch: false,
+                singleRun: true
             }
         },
 
@@ -213,6 +299,20 @@ module.exports = function (grunt) {
                 ],
                 tasks: ['jshint', 'jscs', 'copy:build']
             }
+        },
+
+
+        // Add new app release
+        release: {
+            options: {
+                npm: false,
+                indentation: '    ',
+                github: {
+                    repo: 'fiddus/case4you-client',
+                    usernameVar: 'GITHUB_USERNAME',
+                    passwordVar: 'GITHUB_ACCESS_TOKEN'
+                }
+            }
         }
     });
 
@@ -237,8 +337,25 @@ module.exports = function (grunt) {
     ]);
 
 
+    grunt.registerTask('production', [
+        'clean:prod',
+        'check',
+        'env:prod',
+        'wiredep:all',
+        'copy:dist',
+        'sass:prod',
+        'useminPrepare',
+        'concat:generated',
+        'cssmin:generated',
+        'uglify:generated',
+        'filerev',
+        'usemin',
+        'copy:prod',
+        'clean:after'
+    ]);
+
+
     grunt.registerTask('serve', [
-        // 'express',
         'build',
         'connect:livereload',
         'watch'

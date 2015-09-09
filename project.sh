@@ -34,6 +34,8 @@ function help {
     echo -e ""
     echo -e "${CYAN}build${RESTORE}         Build ${GREEN}Case4You${RESTORE} place it at ${GREEN}build${RESTORE} folder"
     echo -e ""
+    echo -e "${CYAN}production${RESTORE}    Build ${GREEN}Case4You${RESTORE} and place it at ${GREEN}/var/www/case4you${RESTORE} path"
+    echo -e ""
     echo -e "${CYAN}test${RESTORE}          Perform front-end tests"
     echo -e ""
     echo -e "${CYAN}check${RESTORE}         Check code style with JavaScript Code Style (${GREEN}JSCS${RESTORE}) as well check code errors with ${GREEN}JSHint${RESTORE}"
@@ -57,6 +59,12 @@ function serve {
 
 function build {
     dorun "grunt build" "Build Case4You website and add it at /var/www/case4you folder"
+    exitcode=$?
+    return $exitcode
+}
+
+function production {
+    dorun "NODE_ENV=prod grunt production" "Build Case4You website at /var/www/case4you folder"
     exitcode=$?
     return $exitcode
 }
