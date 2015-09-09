@@ -1,0 +1,25 @@
+{
+    "bitwise"   : true,
+    "browser"   : true,
+    "curly"     : true,
+    "eqeqeq"    : true,
+    "esnext"    : true,
+    "expr"      : true,
+    "latedef"   : true,
+    "noarg"     : true,
+    "node"      : true,
+    "nonbsp"    : true,
+    "phantom"   : true,
+    "regexp"    : true,
+    "smarttabs" : true,
+    "strict"    : true,
+    "trailing"  : true,
+    "undef"     : true,
+    "unused"    : true,
+    "globals"   : {
+        "angular"   : true,
+        "moment"    : true,
+        "$"         : true,
+        "_"         : true
+    }
+}
