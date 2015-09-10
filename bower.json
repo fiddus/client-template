@@ -1,24 +1,23 @@
 {
-  "name": "case4you-client",
+  "name": "fiddus-client",
   "version": "0.0.0",
   "authors": [
     "Vinicius Teixeira <vinicius@fiddus.com.br>",
     "Adroaldo de Andrade <adroaldo@fiddus.com.br>",
     "Nathan Godinho <nathan@fiddus.com.br>"
   ],
-  "description": "Client side of Case4You Project",
+  "description": "Client side of Fiddus Project",
   "main": "app.js",
   "moduleType": [
     "node"
   ],
   "keywords": [
-    "Case4You",
-    "Cellphone Shield",
-    "Custom Cellphone Shield"
+    "Fiddus"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/fiddus/case4you-client#readme",
+  "homepage": "https://github.com/fiddus/fiddus-client#readme",
   "dependencies": {
-    "angular": "~1.4.5"
+    "angular": "~1.4.5",
+    "angular-ui-router": "~0.2.15"
   }
 }

@@ -1,12 +1,26 @@
 (function () {
     'use strict';
 
+    // Default run function
     var runApp = function ($rootScope) {
-        $rootScope.projectName = 'Case4You';
+        $rootScope.projectName = 'Fiddus';
     };
 
     runApp.$injector = ['$rootScope'];
 
-    angular.module('caseForYou', [])
+
+    // Default route
+    var routesApp = function ($urlRouterProvider) {
+        $urlRouterProvider.otherwise('/fiddus');
+    };
+
+    routesApp.$injector = ['$urlRouterProvider'];
+
+
+    // Main module
+    angular.module('fiddus', [
+        'ui.router'
+    ])
+        .config(routesApp)
         .run(runApp);
 })();

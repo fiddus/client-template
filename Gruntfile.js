@@ -11,7 +11,7 @@ module.exports = function (grunt) {
             tempPath: '.tmp',
             distPath: grunt.option('path') || './dist',
             buildPath: grunt.option('path') || './build',
-            productionPath: grunt.option('path') || '/var/www/case4you/client'
+            productionPath: grunt.option('path') || '/var/www/fiddus/client'
         };
 
     timer.init(grunt, {
@@ -354,7 +354,7 @@ module.exports = function (grunt) {
                 npm: false,
                 indentation: '    ',
                 github: {
-                    repo: 'fiddus/case4you-client',
+                    repo: 'fiddus/fiddus-client',
                     usernameVar: 'GITHUB_USERNAME',
                     passwordVar: 'GITHUB_ACCESS_TOKEN'
                 }

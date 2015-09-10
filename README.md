@@ -1,6 +1,6 @@
-# Case4You Client
+# Fiddus Client
 
-Client side of Case4You Project
+Client side of Fiddus Project
 
 ## Environment Setup
 
@@ -11,8 +11,8 @@ Client side of Case4You Project
 ## Using:
 
 ```
-   git clone git@github.com:fiddus/case4you-client.git
-   cd case4you-client
+   git clone git@github.com:fiddus/fiddus-client.git
+   cd fiddus-client
    . ./project.sh
    npm install
    bower install

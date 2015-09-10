@@ -32,9 +32,9 @@ function help {
     echo -e ""
     echo -e "${CYAN}serve${RESTORE}         Builds the front-end into the ${GREEN}build${RESTORE} folder and start a local server to serve this files."
     echo -e ""
-    echo -e "${CYAN}build${RESTORE}         Build ${GREEN}Case4You${RESTORE} place it at ${GREEN}build${RESTORE} folder"
+    echo -e "${CYAN}build${RESTORE}         Build ${GREEN}Fiddus${RESTORE} place it at ${GREEN}build${RESTORE} folder"
     echo -e ""
-    echo -e "${CYAN}production${RESTORE}    Build ${GREEN}Case4You${RESTORE} and place it at ${GREEN}/var/www/case4you${RESTORE} path"
+    echo -e "${CYAN}production${RESTORE}    Build ${GREEN}Fiddus${RESTORE} and place it at ${GREEN}/var/www/fiddus${RESTORE} path"
     echo -e ""
     echo -e "${CYAN}test${RESTORE}          Perform front-end tests"
     echo -e ""
@@ -58,13 +58,13 @@ function serve {
 }
 
 function build {
-    dorun "grunt build" "Build Case4You website and add it at /var/www/case4you folder"
+    dorun "grunt build" "Build Fiddus website and add it at /var/www/fiddus folder"
     exitcode=$?
     return $exitcode
 }
 
 function production {
-    dorun "grunt production" "Build Case4You website at /var/www/case4you folder"
+    dorun "grunt production" "Build Fiddus website at /var/www/fiddus folder"
     exitcode=$?
     return $exitcode
 }

@@ -1,19 +1,17 @@
 {
-  "name": "case4you-client",
+  "name": "fiddus-client",
   "version": "0.0.0",
-  "description": "Client side of Case4You Project",
+  "description": "Client side of Fiddus Project",
   "main": "app.js",
   "scripts": {
     "test": "grunt test"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/fiddus/case4you-client.git"
+    "url": "git+ssh://git@github.com/fiddus/fiddus-client.git"
   },
   "keywords": [
-    "Case4You",
-    "Cellphone Shield",
-    "Custom Cellphone Shield"
+    "Fiddus"
   ],
   "author": "Fiddus Tecnologia",
   "contributors": [
@@ -23,9 +21,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fiddus/case4you-client/issues"
+    "url": "https://github.com/fiddus/fiddus-client/issues"
   },
-  "homepage": "https://github.com/fiddus/case4you-client#readme",
+  "homepage": "https://github.com/fiddus/fiddus-client#readme",
   "devDependencies": {
     "chai": "^3.2.0",
     "grunt": "^0.4.5",
