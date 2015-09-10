@@ -93,7 +93,7 @@ module.exports = function (grunt) {
                     cacheLocation: '<%= config.tempPath %>/sass-cache'
                 },
                 files: {
-                    '<%= config.buildPath %>/css/main.css': '<%= config.app %>/app/app.scss'
+                    '<%= config.buildPath %>/css/main.css': '<%= config.app %>/assets/scss/app.scss'
                 }
             },
             prod: {
@@ -103,7 +103,7 @@ module.exports = function (grunt) {
                     cacheLocation: '<%= config.tempPath %>/sass-cache'
                 },
                 files: {
-                    '<%= config.app %>/css/main.css': '<%= config.app %>/app/app.scss'
+                    '<%= config.app %>/css/main.css': '<%= config.app %>/assets/scss/app.scss'
                 }
             }
         },
@@ -161,6 +161,12 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= config.app %>/',
+                        src: ['assets/images/**'],
+                        dest: '<%= config.buildPath %>/'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= config.app %>/',
                         src: ['bower_components/**'],
                         dest: '<%= config.buildPath %>/'
                     }
@@ -191,7 +197,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= config.distPath %>/',
-                        src: ['js/**/*', 'css/**/*'],
+                        src: ['js/**', 'css/**'],
                         dest: '<%= config.productionPath %>/'
                     }
                 ]
