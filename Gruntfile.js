@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         configs = {
             app: '.',
             tempPath: '.tmp',
-            distPath: grunt.option('path') || './dist',
+            distPath: './dist',
             buildPath: grunt.option('path') || './build',
             productionPath: grunt.option('path') || '/var/www/fiddus/client'
         };
@@ -199,6 +199,24 @@ module.exports = function (grunt) {
                         cwd: '<%= config.distPath %>/',
                         src: ['js/**', 'css/**'],
                         dest: '<%= config.productionPath %>/'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= config.app %>/',
+                        src: ['assets/images/**'],
+                        dest: '<%= config.productionPath %>/'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= config.app %>/bower_components/font-awesome/',
+                        src: ['fonts/**'],
+                        dest: '<%= config.productionPath %>/assets/'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= config.app %>/bower_components/roboto-fontface/',
+                        src: ['fonts/**'],
+                        dest: '<%= config.productionPath %>/assets/'
                     }
                 ]
             }
