@@ -234,7 +234,7 @@ module.exports = function (grunt) {
         },
 
 
-        // Change file paths to concatenated, uglified and filereved ones
+        // Change file paths to concatenated and filereved ones
         usemin: {
             html: ['<%= config.distPath %>/index.html'],
             options: {
@@ -243,6 +243,7 @@ module.exports = function (grunt) {
         },
 
 
+        // Uglify just concatenated app.js file
         uglify: {
             /* jscs:disable */
             my_target: {
@@ -254,6 +255,18 @@ module.exports = function (grunt) {
                 }]
             }
             /* jscs:enable */
+        },
+
+
+        // Generate template cache
+        html2js: {
+            options: {
+                quote: "'"
+            },
+            build: {
+                src: ['app/**/*Tpl.html'],
+                dest: '<%= config.buildPath %>/js/templates.js'
+            }
         },
 
 
@@ -383,6 +396,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:build',
         'sass:build',
+        'html2js',
         'wiredep:all',
         'copy:build'
     ]);
