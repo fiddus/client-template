@@ -11,8 +11,8 @@ Client side of Fiddus Project
 ## Using:
 
 ```
-   git clone git@github.com:fiddus/fiddus-client.git
-   cd fiddus-client
+   git clone git@github.com:fiddus/client-template.git
+   cd client-template
    . ./project.sh
    npm install
    bower install

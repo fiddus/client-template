@@ -1,5 +1,5 @@
 {
-  "name": "fiddus-client",
+  "name": "client-template",
   "version": "0.0.0",
   "description": "Client side of Fiddus Project",
   "main": "app.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/fiddus/fiddus-client.git"
+    "url": "git+ssh://git@github.com/fiddus/client-template.git"
   },
   "keywords": [
     "Fiddus"
@@ -21,9 +21,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fiddus/fiddus-client/issues"
+    "url": "https://github.com/fiddus/client-template/issues"
   },
-  "homepage": "https://github.com/fiddus/fiddus-client#readme",
+  "homepage": "https://github.com/fiddus/client-template#readme",
   "devDependencies": {
     "chai": "^3.2.0",
     "grunt": "^0.4.5",

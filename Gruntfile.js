@@ -386,7 +386,7 @@ module.exports = function (grunt) {
                 npm: false,
                 indentation: '    ',
                 github: {
-                    repo: 'fiddus/fiddus-client',
+                    repo: 'fiddus/client-template',
                     usernameVar: 'GITHUB_USERNAME',
                     passwordVar: 'GITHUB_ACCESS_TOKEN'
                 }
