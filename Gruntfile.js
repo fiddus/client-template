@@ -146,7 +146,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: '<%= config.appCwd %>/',
+                        cwd: '<%= config.app %>/',
                         src: ['index.html'],
                         dest: '<%= config.buildPath %>/',
                         flatten: true,
@@ -154,14 +154,14 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: '<%= config.appCwd %>/',
-                        src: ['app/**/*'],
+                        cwd: '<%= config.app %>/',
+                        src: ['app/**'],
                         dest: '<%= config.buildPath %>/'
                     },
                     {
                         expand: true,
-                        cwd: '<%= config.appCwd %>/',
-                        src: ['bower_components/**/*'],
+                        cwd: '<%= config.app %>/',
+                        src: ['bower_components/**'],
                         dest: '<%= config.buildPath %>/'
                     }
                 ]
