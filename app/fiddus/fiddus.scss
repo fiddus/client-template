@@ -1,15 +1,7 @@
-body {
-    font-family: 'Open Sans', Arial, sans-serif;
-}
-
 h1 {
     font-family: lato, sans-serif;
     font-weight: 100;
     color: #fff;
-}
-
-p {
-    color: #858d91;
 }
 
 .emphasis {
@@ -43,6 +35,13 @@ article {
 .content {
     width: 70%;
     margin: 0 auto;
+    color: $white;
+
+    h1 {
+        i {
+            margin-left: 10px;
+        }
+    }
 }
 
 footer {
@@ -50,6 +49,10 @@ footer {
     padding: 10px;
     text-align: center;
     background-color: #202329;
+
+    p {
+        color: $white;
+    }
 }
 
 .footer-logo {

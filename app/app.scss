@@ -1,4 +1,11 @@
+// App imports
 @import
     'scss/variables',
     'scss/general',
     'fiddus/fiddus';
+
+
+// Fonts imports
+@import
+    '../bower_components/font-awesome/scss/font-awesome',
+    '../bower_components/roboto-fontface/css/roboto-fontface';
