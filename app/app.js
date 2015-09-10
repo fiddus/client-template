@@ -20,7 +20,7 @@
     // Main module
     angular.module('fiddus', [
         'ui.router',
-        'templates-build'
+        'templates-fiddus'
     ])
         .config(routesApp)
         .run(runApp);

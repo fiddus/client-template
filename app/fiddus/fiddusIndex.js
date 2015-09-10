@@ -5,7 +5,7 @@
         $stateProvider
             .state('fiddus', {
                 url: '/fiddus',
-                templateUrl: '../app/fiddus/fiddusTpl.html',
+                templateUrl: 'fiddus/fiddusTpl.html',
                 controller: 'fiddusCtrl as vm'
             });
     };

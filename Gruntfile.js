@@ -7,7 +7,6 @@ module.exports = function (grunt) {
     var timer = require('grunt-timer'),
         configs = {
             app: '.',
-            appPath: './',
             tempPath: '.tmp',
             distPath: grunt.option('path') || './dist',
             buildPath: grunt.option('path') || './build',
@@ -132,7 +131,8 @@ module.exports = function (grunt) {
             },
             after: {
                 src: [
-                    './css',
+                    '<%= config.app %>/js',
+                    '<%= config.app %>/css',
                     '<%= config.tempPath %>',
                     '<%= config.distPath %>'
                 ]
@@ -170,9 +170,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: '<%= config.appPath %>',
+                        cwd: '<%= config.app %>/',
                         src: ['index.html'],
-                        dest: '<%= config.distPath %>',
+                        dest: '<%= config.distPath %>/',
                         flatten: true,
                         filter: 'isFile'
                     }
@@ -184,7 +184,7 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: '<%= config.distPath %>/',
                         src: ['index.html'],
-                        dest: '<%= config.productionPath %>',
+                        dest: '<%= config.productionPath %>/',
                         flatten: true,
                         filter: 'isFile'
                     },
@@ -203,7 +203,7 @@ module.exports = function (grunt) {
         filerev: {
             options: {
                 algorithm: 'md5',
-                length: 8
+                length: 4
             },
             prod: {
                 src: [
@@ -261,11 +261,30 @@ module.exports = function (grunt) {
         // Generate template cache
         html2js: {
             options: {
-                quote: "'"
+                module: 'templates-fiddus',
+                quoteChar: '\'',
+                useStrict: true,
+                htmlmin: {
+                    collapseBooleanAttributes: true,
+                    collapseWhitespace: true,
+                    removeAttributeQuotes: true,
+                    removeComments: true,
+                    removeEmptyAttributes: true,
+                    removeRedundantAttributes: true,
+                    removeScriptTypeAttributes: true,
+                    removeStyleLinkTypeAttributes: true
+                },
+                rename: function (moduleName) {
+                    return moduleName.replace('../app/', '');
+                }
             },
             build: {
                 src: ['app/**/*Tpl.html'],
                 dest: '<%= config.buildPath %>/js/templates.js'
+            },
+            prod: {
+                src: ['app/**/*Tpl.html'],
+                dest: '<%= config.app %>/js/templates.js'
             }
         },
 
@@ -396,7 +415,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:build',
         'sass:build',
-        'html2js',
+        'html2js:build',
         'wiredep:all',
         'copy:build'
     ]);
@@ -407,13 +426,13 @@ module.exports = function (grunt) {
         'check',
         'env:prod',
         'wiredep:all',
+        'html2js:prod',
         'copy:dist',
         'sass:prod',
         'useminPrepare',
         'concat:generated',
         'cssmin:generated',
         'uglify',
-        // 'uglify:generated',
         'filerev',
         'usemin',
         'copy:prod',

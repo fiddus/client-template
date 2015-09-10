@@ -18,6 +18,7 @@ bower_components/
 build/
 dist/
 css/
+js/
 
 ###############################################################################
 # Accept these files
