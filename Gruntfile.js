@@ -265,10 +265,21 @@ module.exports = function (grunt) {
         },
 
 
+        ngAnnotate: {
+            options: {
+                singleQuotes: true
+            },
+            prod: {
+                files: {
+                    '<%= config.distPath %>/js/app.js': '<%= config.distPath %>/js/app.js'
+                }
+            }
+        },
+
+
         // Uglify just concatenated app.js file
         uglify: {
-            /* jscs:disable */
-            my_target: {
+            prod: {
                 files: [{
                     expand: true,
                     cwd: '<%= config.distPath %>/js/',
@@ -276,7 +287,6 @@ module.exports = function (grunt) {
                     dest: '<%= config.distPath %>/js/'
                 }]
             }
-            /* jscs:enable */
         },
 
 
@@ -454,6 +464,7 @@ module.exports = function (grunt) {
         'useminPrepare',
         'concat:generated',
         'cssmin:generated',
+        'ngAnnotate',
         'uglify',
         'filerev',
         'usemin',
