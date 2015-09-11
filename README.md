@@ -2,7 +2,9 @@
 
 Client side of Fiddus Project
 
-## Environment Setup
+## Development Environment Setup
+
+To run this project you need to install some [Node](https://nodejs.org/en/) modules
 
 ```
     npm install -g grunt-cli karma mocha bower

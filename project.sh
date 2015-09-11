@@ -58,13 +58,13 @@ function serve {
 }
 
 function build {
-    dorun "grunt build" "Build Fiddus website and add it at /var/www/fiddus folder"
+    dorun "grunt build" "Build Fiddus website and add it at ${GREEN}dist${YELLOW} folder"
     exitcode=$?
     return $exitcode
 }
 
 function production {
-    dorun "grunt production" "Build Fiddus website at /var/www/fiddus folder"
+    dorun "grunt production" "Build Fiddus website at ${GREEN}/var/www/fiddus${YELLOW} folder"
     exitcode=$?
     return $exitcode
 }
@@ -120,8 +120,7 @@ function now_milis {
 
 function dorun {
     cmd_first="$1"
-    cmd_second="$2"
-    name="$3"
+    name="$2"
     echo_red "---------------------------------------------------------------------------------------------------------"
     echo_green "STARTING ${YELLOW} $name ${GREEN} ..."
     echo_cyan "$cmd_first"

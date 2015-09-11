@@ -5,7 +5,7 @@
         var vm = this;
 
         vm.ctrlName = 'Fiddus Controller';
-        vm.logoImage = 'assets/images/logo-site.png';
+        vm.logoImage = 'assets/images/logoSite.png';
     };
 
     dummyCtrl.$inject = [];

@@ -232,9 +232,7 @@ module.exports = function (grunt) {
             prod: {
                 src: [
                     '<%= config.distPath %>/js/**/*.js',
-                    '<%= config.distPath %>/css/**/*.css',
-                    '<%= config.distPath %>/css/fonts/*',
-                    '<%= config.distPath %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
+                    '<%= config.distPath %>/css/**/*.css'
                 ]
             }
         },
