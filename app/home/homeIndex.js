@@ -3,10 +3,10 @@
 
     var dummyState = function ($stateProvider) {
         $stateProvider
-            .state('fiddus', {
-                url: '/fiddus',
-                templateUrl: 'fiddus/fiddusTpl.html',
-                controller: 'fiddusCtrl as vm'
+            .state('home', {
+                url: '/home',
+                templateUrl: 'home/homeTpl.html',
+                controller: 'HomeCtrl as vm'
             });
     };
 

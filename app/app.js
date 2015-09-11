@@ -11,7 +11,7 @@
 
     // Default route
     var routesApp = function ($urlRouterProvider) {
-        $urlRouterProvider.otherwise('/fiddus');
+        $urlRouterProvider.otherwise('/home');
     };
 
     routesApp.$injector = ['$urlRouterProvider'];

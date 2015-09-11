@@ -1,16 +1,16 @@
 (function () {
     'use strict';
 
-    var dummyCtrl = function () {
+    var homeCtrl = function () {
         var vm = this;
 
-        vm.ctrlName = 'Fiddus Controller';
+        vm.ctrlName = 'Home Controller';
         vm.logoImage = 'assets/images/logoSite.png';
     };
 
-    dummyCtrl.$inject = [];
+    homeCtrl.$inject = [];
 
 
     angular.module('fiddus')
-        .controller('fiddusCtrl', dummyCtrl);
+        .controller('HomeCtrl', homeCtrl);
 })();
