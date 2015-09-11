@@ -1,0 +1,12 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Main Development file
+//
+// This file is used to keep some specific development variables that change on production
+// environment. After set variables it import the main SCSS file (mainApp.scss)
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+$fa-font-path: '../../bower_components/font-awesome/fonts' !default;
+$roboto-font-path: '../../bower_components/roboto-fontface/fonts' !default;
+
+@import 'appMain';

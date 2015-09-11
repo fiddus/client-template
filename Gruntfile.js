@@ -93,7 +93,7 @@ module.exports = function (grunt) {
                     cacheLocation: '<%= config.tempPath %>/sass-cache'
                 },
                 files: {
-                    '<%= config.buildPath %>/css/main.css': '<%= config.app %>/assets/scss/app.scss'
+                    '<%= config.buildPath %>/css/main.css': '<%= config.app %>/assets/scss/appDev.scss'
                 }
             },
             prod: {
@@ -103,7 +103,7 @@ module.exports = function (grunt) {
                     cacheLocation: '<%= config.tempPath %>/sass-cache'
                 },
                 files: {
-                    '<%= config.app %>/css/main.css': '<%= config.app %>/assets/scss/app.scss'
+                    '<%= config.app %>/css/main.css': '<%= config.app %>/assets/scss/appProd.scss'
                 }
             }
         },
@@ -391,7 +391,7 @@ module.exports = function (grunt) {
             sass: {
                 files: [
                     '<%= config.app %>/app/**/*.scss',
-                    '<%= config.app %>/app/app.scss'
+                    '<%= config.app %>/assets/**/*.scss'
                 ],
                 tasks: ['sass:build', 'copy:build']
             },
