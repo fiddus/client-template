@@ -2,6 +2,7 @@
 
 Client side of Fiddus Project
 
+
 ## Development Environment Setup
 
 To run this project you need to install some [Node](https://nodejs.org/en/) modules
@@ -10,22 +11,38 @@ To run this project you need to install some [Node](https://nodejs.org/en/) modu
     npm install -g grunt-cli karma mocha bower
 ```
 
-## Using:
+
+## Usage
 
 ```
    git clone git@github.com:fiddus/client-template.git
    cd client-template
-   . ./project.sh
    npm install
    bower install
    serve
 ```
+
+
+## Useful Commands
+
+```
+. ./project.sh
+```
+
+Now you have some command lines at your hands
+
+Type `help` and press Enter to check the available commands
+
+
 
 ## Environment Variables
 
 The following environment variables must be set in order to this app to work properly:
 
 - NODE_ENV: should be set to `prod`, `dev` or `test`
+- GITHUB_USERNAME: should be set to allow `grunt release` to work properly
+- GITHUB_ACCESS_TOKEN: same as above
+
 
 ## Contributing
 

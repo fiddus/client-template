@@ -417,6 +417,7 @@ module.exports = function (grunt) {
             options: {
                 npm: false,
                 indentation: '    ',
+                beforeBump: ['check'],
                 github: {
                     repo: 'fiddus/client-template',
                     usernameVar: 'GITHUB_USERNAME',
